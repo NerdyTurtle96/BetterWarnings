@@ -81,6 +81,8 @@ public class BetterWarnings extends JavaPlugin
 				{
 					commandTarget.kickPlayer(ChatColor.DARK_GREEN + "You've been warned by " + ChatColor.GREEN + commandSender.getName() + ChatColor.DARK_GREEN + " for " + ChatColor.GREEN + warnMessage + ChatColor.DARK_GREEN + ".");
 					
+					commandTarget.setBanned(true);
+					
 					this.getConfig().set(commandTarget.getName(), 3);
 					
 					this.saveConfig();
