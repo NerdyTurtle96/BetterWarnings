@@ -1,0 +1,16 @@
+author: NerdyTurtle96
+main: me.nerdyturtle96.betterwarnings.BetterWarnings
+name: BetterWarnings
+version: 1.0.4
+permissions:
+# -------------------------------- #
+# PERMISSION NODES                 #
+# -------------------------------- #
+  betterwarnings.command.warn: {default: false}
+commands:
+# -------------------------------- #
+# COMMANDS                         #
+# -------------------------------- #
+  warn:
+    description: Warns a player for bad behavior.
+    permission: betterwarnings.command.warn
