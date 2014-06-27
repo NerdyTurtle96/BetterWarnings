@@ -18,13 +18,15 @@ public class BetterWarnings extends JavaPlugin
 	@Override
 	public void onEnable() 
 	{
+		this.getConfig();
+		
 		this.getLogger().info("Enabled.");
 	}
 	
 	@Override
 	public boolean onCommand(CommandSender commandSender, Command chatCommand, String commandLabel, String[] commandArguments) 
 	{
-		Player commandTarget = Bukkit.getServer().getPlayer(commandArguments[1]);
+		Player commandTarget = Bukkit.getServer().getPlayer(commandArguments[0]);
 		
 		if (chatCommand.getName().equalsIgnoreCase("warn")) 
 		{
