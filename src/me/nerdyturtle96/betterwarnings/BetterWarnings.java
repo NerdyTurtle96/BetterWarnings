@@ -28,6 +28,8 @@ public class BetterWarnings extends JavaPlugin
 		
 		if (chatCommand.getName().equalsIgnoreCase("warn")) 
 		{
+			String warnMessage = "";
+			
 			if (commandSender.hasPermission("betterwarnings.command.warn")) 
 			{
 				if (commandArguments.length < 2) 
@@ -40,6 +42,48 @@ public class BetterWarnings extends JavaPlugin
 				if (commandTarget == null) 
 				{
 					commandSender.sendMessage(ChatColor.RED + "That player couldn't be found.");
+					
+					return true;
+				}
+				
+				for (int i = 1; i < commandArguments.length; i++) 
+				{
+					warnMessage = commandArguments[1];
+				}
+				
+				Object warnCount = this.getConfig().get(commandTarget.getName());
+				
+				if (warnCount == null) 
+				{
+					commandTarget.sendMessage(ChatColor.DARK_GREEN + "You've been warned by " + ChatColor.GREEN + commandSender.getName() + ChatColor.DARK_GREEN + " for " + ChatColor.GREEN + warnMessage + ChatColor.DARK_GREEN + ".");
+					
+					this.getConfig().set(commandTarget.getName(), 1);
+					
+					this.saveConfig();
+					
+					return true;
+				}
+				
+				int l = Integer.parseInt(warnCount.toString());
+				
+				if (l == 1) 
+				{
+					commandTarget.kickPlayer(ChatColor.DARK_GREEN + "You've been warned by " + ChatColor.GREEN + commandSender.getName() + ChatColor.DARK_GREEN + " for " + ChatColor.GREEN + warnMessage + ChatColor.DARK_GREEN + ".");
+					
+					this.getConfig().set(commandTarget.getName(), 2);
+					
+					this.saveConfig();
+					
+					return true;
+				}
+				
+				if (l == 2) 
+				{
+					commandTarget.kickPlayer(ChatColor.DARK_GREEN + "You've been warned by " + ChatColor.GREEN + commandSender.getName() + ChatColor.DARK_GREEN + " for " + ChatColor.GREEN + warnMessage + ChatColor.DARK_GREEN + ".");
+					
+					this.getConfig().set(commandTarget.getName(), 3);
+					
+					this.saveConfig();
 					
 					return true;
 				}
